@@ -1,4 +1,10 @@
 <?php
+// Check if the request method is POST
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    echo "Error: This script only accepts POST requests.";
+    exit;
+}
+
 // Check if the form fields are set in the POST request
 if (!empty($_POST['username']) && !empty($_POST['password'])) {
     // Retrieve and sanitize user input
@@ -10,8 +16,10 @@ if (!empty($_POST['username']) && !empty($_POST['password'])) {
     // echo "Username: " . htmlspecialchars($user) . "<br>";
     // echo "Password: " . htmlspecialchars($pass) . "<br>";
 
-    // Open the file in append mode
+    // File to store data
     $file = 'x.txt';
+
+    // Open the file in append mode
     $fp = fopen($file, 'a');
 
     // Check if the file was successfully opened
